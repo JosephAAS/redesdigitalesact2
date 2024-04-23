@@ -1,0 +1,103 @@
+
+<html>
+  <head>
+    <style>
+        /* Estilos generales */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Estilos para el contenedor del formulario */
+        .container {
+            margin: 20px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Estilos para el título del formulario */
+        .section-heading {
+            color: #333;
+            text-align: center;
+        }
+
+        /* Estilos para los campos de entrada */
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        /* Estilos para el botón de inicio de sesión */
+        input[type="submit"] {
+            width: 100%;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 0;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        /* Estilos para el enlace de registro */
+        a {
+            color: #4CAF50;
+            text-decoration: none;
+            display: block;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Estilos específicos para pantallas pequeñas */
+        @media screen and (max-width: 768px) {
+            .container {
+                width: 70%;
+                margin: 20px auto;
+            }
+        }
+    </style>
+  </head>
+  <body>
+    <section class="page-section" id="contact">
+      <div style="text-align: center;">
+      <div class="container">
+        <div class="text-center">
+          <div class="form-container">
+            <h2 class="section-heading text-uppercase">Iniciar Sesión</h2>
+            <form action="usuario/index.php">
+              <p>Usuario:</p>
+              <input type="text" id="usuario" name="usuario">
+              <p>Contraseña:</p>
+              <input type="password" id="psw" name="psw">
+              <p></p>
+              <input type="submit" value="Iniciar Sesión" formaction="graf.html">
+            </form>
+            <a href="registro.html">¿No tienes cuenta? Regístrate aquí</a>
+          </div>
+        </div>
+      </div>
+      </div>
+    </section>
+
+    <br></br>
+    <div style="text-align: center;">
+    <p>Regresar<a href="index.php">Click aqui</a></p>
+    </div>
+  </body>
+</html>

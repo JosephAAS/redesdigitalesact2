@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bienvenido</title>
+    <!-- Incluye la biblioteca Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        #humidityValue {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+            margin-top: 20px;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .button {
+            padding: 10px 20px;
+            margin: 0 10px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: #45a049;
+        }
+
+        .door-status-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .door-label {
+            margin-right: 10px;
+        }
+
+        /* Estilos para los recuadros de estado de la puerta */
+        .door-status {
+            width: 100px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 16px;
+            margin-right: 20px;
+            cursor: pointer; /* Agregamos cursor:pointer para indicar que es clickeable */
+        }
+
+        .door-open {
+            color: green;
+            border-color: green;
+        }
+
+        .door-closed {
+            color: red;
+            border-color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Bienvenido</h1>
+
+    <!-- Estado de la puerta -->
+    <div class="door-status-container">
+        <span class="door-label">Puerta:</span>
+        <div class="door-status door-open" id="doorOpenStatus">Abierta</div>
+        <!-- Inicialmente se muestra como abierta -->
+    </div>
+
+    <!-- Botones de Moly, Juan y Cámaras -->
+    <div class="button-container">
+        <button class="button" id="molyButton">Moly</button>
+        <button class="button" id="juanButton">Juan</button>
+        <button class="button" id="camerasButton">Cámaras</button> <!-- Nuevo botón para cámaras -->
+    </div>
+
+    <p></p>
+    <h3>Temperatura</h3>
+    <!-- Gráfico de temperatura en formato de barra vertical -->
+    <canvas id="tempChart" width="400" height="400"></canvas>
+
+    <!-- Valor de humedad -->
+    <div id="humidityValue"></div>
+
+    <script>
+        // Datos de ejemplo para la temperatura y la humedad
+        var temperatureData = [20, 21, 22, 23, 24, 25];
+        var humidityData = [50, 55, 60, 65, 70, 75];
+
+        // Configuración de la gráfica de temperatura (barra vertical)
+        var tempCtx = document.getElementById('tempChart').getContext('2d');
+        var tempChart = new Chart(tempCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Temperatura'],
+                datasets: [{
+                    label: 'Temperatura (°C)',
+                    data: temperatureData,
+                    backgroundColor: 'rgba(255, 99, 132, 0.5)',
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                indexAxis: 'y',
+                scales: {
+                    x: {
+                        min: 0,
+                        max: 50,
+                        ticks: {
+                            stepSize: 10
+                        }
+                    }
+                }
+            }
+        });
+
+        // Muestra el valor de humedad
+        var humidityValue = document.getElementById('humidityValue');
+        humidityValue.innerHTML = 'Humedad: ' + humidityData[humidityData.length - 1] + '%'; // Muestra el último valor de la matriz de humedad
+
+        // Evento click para cambiar el estado de la puerta
+        document.getElementById('doorOpenStatus').addEventListener('click', function() {
+            var doorStatus = document.getElementById('doorOpenStatus');
+            if (doorStatus.classList.contains('door-open')) {
+                doorStatus.textContent = 'Cerrada';
+                doorStatus.classList.remove('door-open');
+                doorStatus.classList.add('door-closed');
+            } else {
+                doorStatus.textContent = 'Abierta';
+                doorStatus.classList.remove('door-closed');
+                doorStatus.classList.add('door-open');
+            }
+        });
+
+        // Evento click para el botón de Moly
+        document.getElementById('molyButton').addEventListener('click', function() {
+            window.location.href = 'moly.html'; 
+        });
+
+        // Evento click para el botón de Juan
+        document.getElementById('juanButton').addEventListener('click', function() {
+            window.location.href = 'juan.html'; 
+        });
+
+        // Evento click para el botón de Cámaras
+        document.getElementById('camerasButton').addEventListener('click', function() {
+            window.location.href = 'camaras.html'; // Reemplaza 'camaras.html' con la URL de la página de cámaras
+        });
+    </script>
+  <div style="text-align: center;">
+    <a href="nuevo.html" style="display: inline-block; padding: 10px 20px; background-color: #FF0000; color: white; text-decoration: none; border-radius: 5px; margin-right: 10px;">Back</a>
+    <a href="index.php" style="display: inline-block; padding: 10px 20px; background-color: #0074D9; color: white; text-decoration: none; border-radius: 5px;">Home</a>
+  </div>
+</body>
+</html>
